@@ -1,10 +1,12 @@
+import java.util.Arrays;
+
 import javax.swing.JOptionPane;
 
 public class App {
     public static void main(String[] args) throws Exception {
         int menu;
         String sala[][];
-        double bolsa = 0.0, valor=1.0;
+        double bolsa = 0.0, valor = 1.0;
         Funcionalidaddes fn = new Funcionalidaddes();
         do {
             int filas = Integer.parseInt(JOptionPane.showInputDialog(
@@ -26,10 +28,10 @@ public class App {
                             .parseInt(JOptionPane.showInputDialog("Ingrese el numero de fila del asiento a comprar"));
                     int columna = Integer.parseInt(
                             JOptionPane.showInputDialog("Ingrese el numero de columna del asiento a comprar"));
-                    String[][] copy = sala.clone();
-                    sala = fn.llenarAsiento(fila, columna, sala, valor);
-                    if (!copy.equals(sala)) {
-                        bolsa += 1.0;
+                    String[][] resultado = fn.llenarAsiento(fila, columna, sala, valor);
+                    if (resultado != null) {
+                        sala = resultado;
+                        bolsa += valor;
                     }
                     break;
                 case 3:
@@ -45,6 +47,6 @@ public class App {
                 default:
                     break;
             }
-        } while (menu >= 1 && menu < +5);
+        } while (menu >= 1 && menu <= 5);
     }
 }

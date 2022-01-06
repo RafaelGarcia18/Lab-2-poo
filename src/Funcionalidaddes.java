@@ -64,16 +64,16 @@ public class Funcionalidaddes {
         return datos;
     }
 
-    public String[][] llenarAsiento(int fila, int columna, String[][] sala, double bolsa) {
+    public String[][] llenarAsiento(int fila, int columna, String[][] sala, double valor) {
         String matriz[][] = sala;
-
         if (matriz[(fila - 1)][(columna - 1)].equals(vacio)) {
             matriz[(fila - 1)][(columna - 1)] = ocupado;
-            JOptionPane.showMessageDialog(null, "Asiento vendido con exito\nCosto a cobrar del asiento: " + bolsa);
+            JOptionPane.showMessageDialog(null, "Asiento vendido con exito\nCosto a cobrar del asiento: " + valor);
+            return matriz;
         } else {
             JOptionPane.showMessageDialog(null, "Este asiento ya se encuentra ocupado");
+            return null;
         }
-        return matriz;
     }
 
 }
