@@ -64,6 +64,16 @@ public class Funcionalidaddes {
         return datos;
     }
 
+    /**
+     * Metodo para ocupar un siento
+     * 
+     * @param fila    posicion de la fila en donde se ubica el asiento a llenar
+     * @param columna posicion de la columna en donde se ubica el asiento a llenar
+     * @param sala    matriz a la cual se va a modificar
+     * @param valor   valor del asiento para mostrar en mensaje de confirmacion
+     * @return retorna la matriz modificada o null si la posision ya esta marcada
+     *         como ocupado
+     */
     public String[][] llenarAsiento(int fila, int columna, String[][] sala, double valor) {
         String matriz[][] = sala;
         if (matriz[(fila - 1)][(columna - 1)].equals(vacio)) {
@@ -72,6 +82,31 @@ public class Funcionalidaddes {
             return matriz;
         } else {
             JOptionPane.showMessageDialog(null, "Este asiento ya se encuentra ocupado");
+            return null;
+        }
+    }
+
+    /**
+     * Metodo para desocupar un asiento
+     * 
+     * @param fila    posicion de la fila en donde se ubica el asiento a desocupar
+     * @param columna posicion de la columna en donde se ubica el asiento a
+     *                desocupar
+     * @param sala    matriz a la cual se va a modificar
+     * @param valor   valor del asiento para mostrar en mensaje de confirmacion de
+     *                devolucion
+     * @return retorna la matriz modificada o null si la posision ya esta marcada
+     *         como ocupado
+     */
+    public String[][] vaciarAsiento(int fila, int columna, String[][] sala, double valor) {
+        String matriz[][] = sala;
+        if (matriz[(fila - 1)][(columna - 1)].equals(ocupado)) {
+            matriz[(fila - 1)][(columna - 1)] = vacio;
+            JOptionPane.showMessageDialog(null,
+                    "Asiento devuelto con exito\nCosto a devolver del asiento: " + (valor * 0.8));
+            return matriz;
+        } else {
+            JOptionPane.showMessageDialog(null, "Este asiento se encuentra vacio");
             return null;
         }
     }
